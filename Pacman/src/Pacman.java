@@ -1,23 +1,15 @@
+import javax.swing.SwingUtilities;
+
 
 public class Pacman {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-		fuuu();
-		
-		while(true){
-			System.out.println("bonjour bonjour bonjour");
-			System.out.println("YOLO SWAG");
-		}
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				FenetreJeu fenPrin = new FenetreJeu();
+				fenPrin.setVisible(true);
+			}
+		});
 	}
-
-	private static void fuuu() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
