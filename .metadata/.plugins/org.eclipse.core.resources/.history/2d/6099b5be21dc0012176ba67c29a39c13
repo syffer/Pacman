@@ -8,8 +8,6 @@ public class Pacman {
 		// TODO Auto-generated method stub
 
 		System.out.println("bonjour bonjour bonjour");
-		System.out.println("YOLO SWAG");
-
 	}
 
 }
