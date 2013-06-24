@@ -24,9 +24,8 @@ public class Map {
 		this.tab = tab;
 	}
 
-	public Map(){
-		w = -1;
-		h = -1;
+	public Map(String path){
+		this.load(path);
 	}
 	
 	public int getW() {
@@ -46,25 +45,43 @@ public class Map {
 	}
 	
 	public void load(String path){
+		/* Chargement du texte */
 		File f = new File(path);
-		Charset encoding = Charset.defaultCharset();
-		InputStream in;
 		try {
-			in = new FileInputStream(f);
-			Reader reader = new InputStreamReader(in,encoding);
-			//Reader buffer = new BufferedReader(reader);
-			int r;
-			try {
-				while((r=reader.read()) != -1){
-				    char ch = (char) r;
-				    System.out.print(ch);
+			Scanner scanner = new Scanner(f);
+			if(scanner.hasNextInt()){
+				this.w = scanner.nextInt();
+				System.out.println(this.w);
+			}
+			else{
+				System.out.println("Erreur lecture w");
+				return;
+			}
+				
+			if(scanner.hasNextInt()){
+				this.h = scanner.nextInt();
+				System.out.println(this.h);
+			}
+			else{
+				System.out.println("Erreur lecture h");
+				return;
+			}
+			
+			this.tab = new Case[this.h][this.w];
+			
+			for(int i = 0 ; i < this.h ; i++){
+				String tmp;
+				if(scanner.hasNextLine()){
+					tmp = scanner.nextLine();
 				}
-			} catch (IOException e) {
-				e.printStackTrace();
+				for(int j = 0 ; j < this.w ; j ++){
+					this.tab[i][j].setType((Case.Type)(tmp.charAt(j) - '0'));
+				}
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 	public void save(String path){

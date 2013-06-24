@@ -7,8 +7,7 @@ public class Pacman {
 
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				Map maMap = new Map();
-				maMap.load("rsc\\map.txt");
+				Map maMap = new Map("rsc\\map.txt");
 				
 				FenetreJeu fenPrin = new FenetreJeu();
 				fenPrin.setVisible(true);

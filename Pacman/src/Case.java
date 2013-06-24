@@ -22,5 +22,7 @@ public class Case {
 		return this.getType() == Type.VIDE;
 	}
 	
+	public static Type(int v){
+	}
 	
 }
