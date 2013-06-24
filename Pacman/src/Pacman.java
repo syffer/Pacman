@@ -9,8 +9,8 @@ public class Pacman {
 			public void run() {
 				Map maMap = new Map("rsc\\map.txt");
 				
-				FenetreJeu fenPrin = new FenetreJeu();
-				fenPrin.setVisible(true);
+				//FenetreJeu fenPrin = new FenetreJeu();
+				//fenPrin.setVisible(true);
 				
 				fenPrin.peindreMurs(maMap);
 				
