@@ -16,6 +16,14 @@ public class Map {
 	private int h;
 	private Case tab[][];
 	
+	public Case[][] getTab() {
+		return tab;
+	}
+
+	public void setTab(Case[][] tab) {
+		this.tab = tab;
+	}
+
 	public Map(){
 		w = -1;
 		h = -1;

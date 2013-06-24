@@ -10,4 +10,17 @@ public class Case {
 	public Type getType() {
 		return type;
 	}
+	
+	
+	public boolean estMur()
+	{
+		return this.getType() == Type.MUR;
+	}
+	
+	public boolean estVide()
+	{
+		return this.getType() == Type.VIDE;
+	}
+	
+	
 }
