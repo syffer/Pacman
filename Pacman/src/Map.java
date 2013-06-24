@@ -9,12 +9,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
+import java.util.Scanner;
+
 
 
 public class Map {
 	private int w;
 	private int h;
 	private Case tab[][];
+	
 	
 	public Case[][] getTab() {
 		return tab;
@@ -67,20 +70,73 @@ public class Map {
 				return;
 			}
 			
+			
 			this.tab = new Case[this.h][this.w];
 			
-			for(int i = 0 ; i < this.h ; i++){
-				String tmp;
-				if(scanner.hasNextLine()){
+			for( int i = 0 ; i < this.h ; i++)
+			{
+				String tmp = "";
+				
+				
+				if(scanner.hasNextLine())
+				{
 					tmp = scanner.nextLine();
+					
+					// le mystère de la ligne qui ne contient rien disparais ici
+					if( tmp.length() != this.getW() ) tmp = scanner.nextLine();
+					
 				}
-				for(int j = 0 ; j < this.w ; j ++){
-					this.tab[i][j].setType((Case.Type)(tmp.charAt(j) - '0'));
+				
+				
+				System.out.println("   :::   " + tmp);
+				
+				for(int j = 0 ; j < tmp.length() ; j ++)
+				{
+					//System.out.println( i + " " + j );
+					this.tab[i][j] = new Case( tmp.charAt(j) );
+					//System.out.println("   :::   " + tmp.charAt(j) );
+										
 				}
+				
 			}
+			
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		
+	}
+	
+	public String toString()
+	{
+		
+		String tmp = "";
+		for( int i = 0 ; i < this.h ; i++ )
+		{
+			for( int j = 0 ; j < this.w ; j++ )
+			{
+				//System.out.println( i + " " + j );
+				
+				if( this.tab[i][j].estMur() )
+				{
+					tmp = tmp + " MUR";
+					//System.out.println(" MUR");
+				}
+				else if( this.tab[i][j].estVide() )
+				{
+					tmp = tmp + " VIDE";
+					//System.out.println(" VIDE");
+				}
+				else 
+				{
+					tmp = tmp + " autre";
+					//System.out.println(" autre");
+				}
+			}
+			tmp = tmp + "\n";
+		}
+		
+		return tmp;
 		
 	}
 	

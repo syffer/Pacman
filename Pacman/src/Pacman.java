@@ -9,8 +9,13 @@ public class Pacman {
 			public void run() {
 				Map maMap = new Map("rsc\\map.txt");
 				
+				System.out.println( maMap.toString() );
+				
+				
 				FenetreJeu fenPrin = new FenetreJeu();
 				fenPrin.setVisible(true);
+				
+				
 				
 				fenPrin.peindreMurs(maMap);
 				

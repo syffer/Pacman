@@ -3,6 +3,16 @@ public class Case {
 	public enum Type {MUR,VIDE,TP,MUR_SPAWN};
 	private Type type;
 	
+	
+	public Case( char x )
+	{
+		if( x == '1' ) this.type = Type.MUR;
+		else if( x == '0' ) this.type = Type.VIDE;
+		else this.type =  Type.MUR_SPAWN;
+	}
+	
+	
+	
 	public void setType(Type t){
 		type = t;
 	}
@@ -22,7 +32,6 @@ public class Case {
 		return this.getType() == Type.VIDE;
 	}
 	
-	public static Type(int v){
-	}
+	
 	
 }
