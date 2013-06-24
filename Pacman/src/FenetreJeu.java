@@ -32,4 +32,9 @@ public class FenetreJeu extends JFrame {
 				
 		return panel;
 	}
+	
+	public void lol()
+	{
+		System.out.println("lol");
+	}
 }
