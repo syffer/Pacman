@@ -1,4 +1,4 @@
 Pacman
 ======
 
-An original game !!!
+A free version of PacMan, as an holidays hobby.
