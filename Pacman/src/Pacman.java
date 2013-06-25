@@ -11,25 +11,7 @@ public class Pacman {
 				//System.out.println( maMap.toString() );
 
 				FenetreJeu fenPrin = new FenetreJeu();
-				//fenPrin.setVisible(true);
-				
-				
-								
 				fenPrin.peindreMurs(maMap);
-				/*
-				try 
-				{
-					Thread.sleep(40);
-				} 
-				catch (InterruptedException e) 
-				{
-					e.printStackTrace();
-				}
-					
-				
-				fenPrin.peindreMurs(maMap);
-				
-				*/
 			}
 		});
 	}
