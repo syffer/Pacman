@@ -9,7 +9,8 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class FenetreJeu extends JFrame {
 		
-	JPanel panneau;
+	Panneau panneau;
+	JFrame fen;
 	
 	public FenetreJeu(){
 		super();
@@ -17,60 +18,36 @@ public class FenetreJeu extends JFrame {
 	}
 
 	private void build() {
-		setTitle("Pacman");
-		setSize(600,400);
-		setLocationRelativeTo(null);
-		setResizable(true);
+		this.fen = new JFrame();
+		
+		fen.setTitle("Pacman");
+		fen.setSize(600,400);
+		fen.setLocationRelativeTo(null);
+		fen.setResizable(true);
 		Dimension min = new Dimension(200, 200);
 		Dimension max = new Dimension(500, 700);
-		setMinimumSize(min);
-		setMaximumSize(max);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setContentPane( buildContentPanel());
+		fen.setMinimumSize(min);
+		fen.setMaximumSize(max);
+		fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		this.panneau = new Panneau();
+		
+		fen.setContentPane( this.panneau );
+		
+		fen.setVisible(true);
 	}
 	
-	private JPanel buildContentPanel(){
-		this.panneau  = new JPanel();
-		panneau.setLayout(new FlowLayout());
-		panneau.setBackground(Color.RED);
 		
-		return panneau;
+	
+	
+	public Panneau getPanneau()
+	{
+		return this.panneau;
 	}
 	
 	
 	public void peindreMurs( Map map )
 	{
-		int w = 18;
-		int h = 12;
-		
-		Case tableau[][] = map.getTab();
-		Graphics g = panneau.getGraphics();
-		
-		for( int i = 0 ; i < map.getH() ; i++ )
-		{
-			for( int j = 0 ; j < map.getW() ; j++)
-			{
-				switch(tableau[i][j].getType()){
-				case MUR:
-					g.setColor(Color.BLUE);
-					break;
-				case VIDE:
-					g.setColor(Color.DARK_GRAY);
-					break;
-				case TP:
-					g.setColor(Color.GREEN);
-					break;
-				case MUR_SPAWN:
-					g.setColor(Color.YELLOW);
-					break;
-					
-				}
-
-				g.fillRect(j*w,i*h, w, h);
-
-			}
-		}
-
-		panneau.repaint();
+		this.getPanneau().peindreMurs(map);
 	}
 }
