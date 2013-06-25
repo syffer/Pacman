@@ -6,7 +6,11 @@ public class Case {
 		MUR('1'),
 		VIDE('0'),
 		TP('3'),
-		MUR_SPAWN('2');
+		MUR_SPAWN('2'),
+		PASTILLE('4'),
+		NON_PASTILLE('5'),
+		PASTILLE_SPE('6'),
+		BONUS('7');
 	 
 		private final char value;
 		

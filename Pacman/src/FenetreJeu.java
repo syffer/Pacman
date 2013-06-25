@@ -36,8 +36,8 @@ public class FenetreJeu extends JFrame {
 	}
 	
 	
-	public void peindreMurs( Map map )
+	public void peindreMurs( Map map , Map map2)
 	{
-		this.getPanneau().peindreMurs(map);
+		this.getPanneau().peindre(map,map2);
 	}
 }
