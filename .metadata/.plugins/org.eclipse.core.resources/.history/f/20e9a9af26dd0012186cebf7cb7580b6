@@ -1,0 +1,87 @@
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class FenetreJeu extends JFrame {
+		
+	JPanel panneau;
+	
+	public FenetreJeu(){
+		super();
+		build();
+	}
+
+	private void build() {
+		setTitle("Pacman");
+		setSize(600,400);
+		setLocationRelativeTo(null);
+		setResizable(true);
+		Dimension min = new Dimension(200, 200);
+		Dimension max = new Dimension(500, 700);
+		setMinimumSize(min);
+		setMaximumSize(max);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setContentPane( buildContentPanel());
+	}
+	
+	private JPanel buildContentPanel(){
+		this.panneau  = new JPanel();
+		panneau.setLayout(new FlowLayout());
+		panneau.setBackground(Color.BLACK);
+		
+		return panneau;
+	}
+	
+	
+	public void peindreMurs( Map tmp )
+	{
+		int x = 0;
+		int y = 0;
+		int w = 10;
+		int h = 10;
+		
+		Case tableau[][] = tmp.getTab();
+		
+		
+		
+		Graphics g = panneau.getGraphics();
+		
+		
+		// attention ici , sa va chauffer !!!
+		for( int i = 0 ; i < tmp.getH() ; i++ )
+		{
+			
+			
+			for( int j = 0 ; j < tmp.getW() ; j ++)
+			{
+				
+				
+				if( tableau[i][j].estMur() )
+				{
+					g.setColor(Color.blue);
+					g.fillRect(x,y, 10, 10);
+				}
+				else if( tableau[i][j].estVide() )
+				{
+					g.setColor(Color.black);
+					g.fillRect(j*w,i*h, 10, 10);
+				}
+				else System.out.println("9");
+				
+				x += 10;
+				
+				
+			}
+			y += 10;
+			
+		}
+		
+		panneau.paint(g);
+		this.setContentPane(panneau);
+	}
+}

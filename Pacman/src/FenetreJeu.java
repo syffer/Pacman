@@ -32,53 +32,45 @@ public class FenetreJeu extends JFrame {
 	private JPanel buildContentPanel(){
 		this.panneau  = new JPanel();
 		panneau.setLayout(new FlowLayout());
-		panneau.setBackground(Color.BLACK);
+		panneau.setBackground(Color.RED);
 		
 		return panneau;
 	}
 	
 	
-	public void peindreMurs( Map tmp )
+	public void peindreMurs( Map map )
 	{
-		int x = 0;
-		int y = 0;
-		Case tableau[][] = tmp.getTab();
+		int w = 18;
+		int h = 12;
 		
-		
-		
+		Case tableau[][] = map.getTab();
 		Graphics g = panneau.getGraphics();
 		
-		
-		// attention ici , sa va chauffer !!!
-		for( int i = 0 ; i < tmp.getH() ; i++ )
+		for( int i = 0 ; i < map.getH() ; i++ )
 		{
-			
-			
-			for( int j = 0 ; j < tmp.getW() ; j ++)
+			for( int j = 0 ; j < map.getW() ; j++)
 			{
-				
-				
-				if( tableau[i][j].estMur() )
-				{
-					g.setColor(Color.blue);
-					g.fillRect(x,y, 10, 10);
+				switch(tableau[i][j].getType()){
+				case MUR:
+					g.setColor(Color.BLUE);
+					break;
+				case VIDE:
+					g.setColor(Color.DARK_GRAY);
+					break;
+				case TP:
+					g.setColor(Color.GREEN);
+					break;
+				case MUR_SPAWN:
+					g.setColor(Color.YELLOW);
+					break;
+					
 				}
-				else if( tableau[i][j].estVide() )
-				{
-					g.setColor(Color.black);
-					g.fillRect(x,y, 10, 10);
-				}
-				else System.out.println("9");
-				
-				x += 10;
-				
-				
+
+				g.fillRect(j*w,i*h, w, h);
+
 			}
-			y += 10;
-			
 		}
-		
-		panneau.paint(g);
-		this.setContentPane(panneau);
+
+		panneau.repaint();
 	}
 }

@@ -1,0 +1,70 @@
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class FenetreJeu extends JFrame {
+		
+	JPanel panneau;
+	
+	public FenetreJeu(){
+		super();
+		build();
+	}
+
+	private void build() {
+		setTitle("Pacman");
+		setSize(600,400);
+		setLocationRelativeTo(null);
+		setResizable(true);
+		Dimension min = new Dimension(200, 200);
+		Dimension max = new Dimension(500, 700);
+		setMinimumSize(min);
+		setMaximumSize(max);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setContentPane( buildContentPanel());
+	}
+	
+	private JPanel buildContentPanel(){
+		this.panneau  = new JPanel();
+		//panneau.setLayout(new FlowLayout());
+		panneau.setBackground(Color.RED);
+		
+		return panneau;
+	}
+	
+	
+	public void peindreMurs( Map map )
+	{
+		int w = 10;
+		int h = 10;
+		
+		Case tableau[][] = map.getTab();
+		Graphics g = panneau.getGraphics();
+		
+		for( int i = 0 ; i < map.getH() ; i++ )
+		{
+			for( int j = 0 ; j < map.getW() ; j++)
+			{
+				if( tableau[i][j].estMur() )
+				{
+					System.out.println("dans mur");
+					g.setColor(Color.BLUE);
+					g.fillRect(j*w,i*h, w, h);
+				}
+				else if( tableau[i][j].estVide() )
+				{
+					System.out.println("dans vide");
+					g.setColor(Color.ORANGE);
+					g.fillRect(j*w,i*h, w, h);
+				}
+				else System.out.println("42");
+			}
+		}
+
+		//panneau.repaint();
+	}
+}

@@ -1,14 +1,36 @@
 
 public class Case {
-	public enum Type {MUR,VIDE,TP,MUR_SPAWN};
+	
+	/* définition type */
+	public enum Type {
+		MUR('1'),
+		VIDE('0'),
+		TP('3'),
+		MUR_SPAWN('2');
+	 
+		private final char value;
+		
+		private Type(char value) {
+			this.value = value;
+		}
+	 
+		public char getValue() {
+			return this.value;
+		}
+	};
+	/* fin définition type */
+	
 	private Type type;
 	
 	
 	public Case( char x )
 	{
-		if( x == '1' ) this.type = Type.MUR;
-		else if( x == '0' ) this.type = Type.VIDE;
-		else this.type =  Type.MUR_SPAWN;
+		for(Type t : Type.values()){
+			if ( x == t.getValue()){
+				this.type = t;
+				break;
+			}
+		}
 	}
 	
 	

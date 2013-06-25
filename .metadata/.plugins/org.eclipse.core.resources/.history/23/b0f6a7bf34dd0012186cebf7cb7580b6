@@ -1,0 +1,57 @@
+
+public class Case {
+	
+	/* définition type */
+	public enum Type {
+		MUR('1'),
+		VIDE('0'),
+		TP('3'),
+		MUR_SPAWN('2');
+	 
+		private final char value;
+		
+		private Type(char value) {
+			this.value = value;
+		}
+	 
+		public char getValue() {
+			return this.value;
+		}
+	};
+	/* fin définition type */
+	
+	private Type type;
+	
+	
+	public Case( char x )
+	{
+		for(Type t : Type.values()){
+			if ( x == t.getValue()) this.type = t;
+			break;
+		}
+	}
+	
+	
+	
+	public void setType(Type t){
+		type = t;
+	}
+
+	public Type getType() {
+		return type;
+	}
+	
+	
+	public boolean estMur()
+	{
+		return this.getType() == Type.MUR;
+	}
+	
+	public boolean estVide()
+	{
+		return this.getType() == Type.VIDE;
+	}
+	
+	
+	
+}

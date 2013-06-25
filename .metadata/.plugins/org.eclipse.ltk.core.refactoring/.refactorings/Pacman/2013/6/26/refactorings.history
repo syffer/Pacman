@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;tmp&apos; in &apos;FenetreJeu.peindreMurs(...)&apos; to &apos;map&apos;&#x0D;&#x0A;- Original project: &apos;Pacman&apos;&#x0D;&#x0A;- Original element: &apos;FenetreJeu.peindreMurs(Map).tmp&apos;&#x0D;&#x0A;- Renamed element: &apos;tmp&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;tmp&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{FenetreJeu.java[FenetreJeu~peindreMurs~QMap;@tmp!887!893!891!893!QMap;!0!true" name="map" references="true" stamp="1372120694426" version="1.0"/>
+</session>

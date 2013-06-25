@@ -1,0 +1,52 @@
+
+public class Case {
+	public enum Type {
+		MUR(1),
+		VIDE(0),
+		TP(3),
+		MUR_SPAWN(2);
+	 
+		private final int value;
+		
+		private Type(int value) {
+			this.value = value;
+		}
+	 
+		public int getValue() {
+			return this.value;
+		}
+	};
+	private Type type;
+	
+	
+	public Case( char x )
+	{
+		if( x == '1' ) this.type = Type.MUR;
+		else if( x == '0' ) this.type = Type.VIDE;
+		else this.type = Type.MUR_SPAWN;
+	}
+	
+	
+	
+	public void setType(Type t){
+		type = t;
+	}
+
+	public Type getType() {
+		return type;
+	}
+	
+	
+	public boolean estMur()
+	{
+		return this.getType() == Type.MUR;
+	}
+	
+	public boolean estVide()
+	{
+		return this.getType() == Type.VIDE;
+	}
+	
+	
+	
+}

@@ -1,14 +1,5 @@
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.nio.charset.Charset;
 import java.util.Scanner;
 
 
@@ -58,6 +49,7 @@ public class Map {
 			}
 			else{
 				System.out.println("Erreur lecture w");
+				scanner.close();
 				return;
 			}
 				
@@ -67,40 +59,36 @@ public class Map {
 			}
 			else{
 				System.out.println("Erreur lecture h");
+				scanner.close();
 				return;
 			}
 			
 			
+			
+			// le nextInt ne prend surement pas le caractère de fin de ligne (\n)
+			if(scanner.hasNextLine()) scanner.nextLine();
+
 			this.tab = new Case[this.h][this.w];
 			
 			for( int i = 0 ; i < this.h ; i++)
 			{
 				String tmp = "";
 				
-				
 				if(scanner.hasNextLine())
 				{
 					tmp = scanner.nextLine();
-					
-					// le mystère de la ligne qui ne contient rien disparais ici
-					if( tmp.length() != this.getW() ) tmp = scanner.nextLine();
-					
 				}
 				
-				
-				System.out.println("   :::   " + tmp);
+				System.out.println(tmp);
 				
 				for(int j = 0 ; j < tmp.length() ; j ++)
 				{
-					//System.out.println( i + " " + j );
 					this.tab[i][j] = new Case( tmp.charAt(j) );
-					//System.out.println("   :::   " + tmp.charAt(j) );
-										
 				}
 				
 			}
 			
-			
+			scanner.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -115,23 +103,7 @@ public class Map {
 		{
 			for( int j = 0 ; j < this.w ; j++ )
 			{
-				//System.out.println( i + " " + j );
-				
-				if( this.tab[i][j].estMur() )
-				{
-					tmp = tmp + " MUR";
-					//System.out.println(" MUR");
-				}
-				else if( this.tab[i][j].estVide() )
-				{
-					tmp = tmp + " VIDE";
-					//System.out.println(" VIDE");
-				}
-				else 
-				{
-					tmp = tmp + " autre";
-					//System.out.println(" autre");
-				}
+				tmp += this.tab[i][j].getType();
 			}
 			tmp = tmp + "\n";
 		}
