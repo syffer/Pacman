@@ -1,14 +1,14 @@
 import java.awt.Color;
 import java.awt.Graphics;
-import javax.swing.JPanel;
 
+
+import javax.swing.JPanel;
 
 
 @SuppressWarnings("serial")
 public class Panneau extends JPanel
 {
-	static boolean peutDessiner = false;
-
+	
 	Map laMap;
 	Map mapPoint;
 	
@@ -17,8 +17,7 @@ public class Panneau extends JPanel
 	
 	@Override
 	public void paintComponent(Graphics imMap) 
-	{
-	
+	{	
 		//if( !peutDessiner )
 		//{
 		imMap.setColor(Color.DARK_GRAY);
