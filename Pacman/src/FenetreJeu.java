@@ -10,10 +10,10 @@ public class FenetreJeu extends JFrame implements KeyListener
 {
 		
 	Panneau panneau;
-	
-	
-	Map mapMur;
+
 	Map laMap;
+	
+	char touche_pacman = 'q';
 	
 	
 	public FenetreJeu(){
@@ -27,7 +27,7 @@ public class FenetreJeu extends JFrame implements KeyListener
 		new JFrame();
 		
 		setTitle("Pacman");
-		setSize(600,400);
+		setSize(580,600);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,34 +48,37 @@ public class FenetreJeu extends JFrame implements KeyListener
 	}
 	
 	
-	public void peindreMurs( Map map)
+	public char getTouchePacman()
 	{
+		return this.touche_pacman;
+	}
+	
+	
+	public void peindreMurs( Map map )
+	{
+		this.laMap = map;
 		this.getPanneau().peindre(map);
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		Case tab[][] = this.laMap.getTab();
+	public void keyReleased(KeyEvent e) 
+	{
+		// changer la direction de déplacement du pacman
+		this.touche_pacman =  e.getKeyChar();
 		
-		for(int i = 0 ; i < this.laMap.getH() ; i++ )
-		{
-			for( int j = 0 ; j < this.laMap.getW() ; j++ )
-			{
-				tab[i][j] = new Case( '2' );
-			}
-		}
-
-		laMap.setTab(tab);
-		
-		peindreMurs(mapMur,laMap);
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
+		
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
+	
 
 	public void init()
 	{
@@ -85,6 +88,8 @@ public class FenetreJeu extends JFrame implements KeyListener
 	{
 		requestFocus();
 	}
+
+	
 	
 	
 }

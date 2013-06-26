@@ -22,8 +22,8 @@ public class Panneau extends JPanel
 		
 		
 		// partie création murs
-		int w = 18;
-		int h = 12;
+		int w = 20;
+		int h = 20;
 		
 		for( int i = 0 ; i < laMap.getH() ; i++ )
 		{
@@ -40,19 +40,13 @@ public class Panneau extends JPanel
 					imMap.setColor(Color.GREEN);
 					break;
 				case MUR_SPAWN:
-					imMap.setColor(Color.darkGray);
+					imMap.setColor(Color.DARK_GRAY);
 					break;
 				default:
 					// rajouter ici exception
 					new Exception_Pacman("erreur lors du chargement des murs");
 					
-					imMap.setColor(Color.RED);
-					break;
-				default:
-					// indiquer une erreur
-					// le faire autrement ... -> Exception
-					imMap.setColor(Color.RED);
-					imMap.fillOval(j*w,i*h, w, h);
+					imMap.setColor(Color.GREEN);
 					break;
 				}
 
