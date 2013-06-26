@@ -12,8 +12,12 @@ public class Pacman {
 				Map mapPoint = new Map("rsc\\mapPoint.txt");
 				
 				
-				//System.out.println( maMap.toString() );
-
+				System.out.println( maMap.toString() );
+				System.out.println( mapPoint.toString() );
+							
+				
+				
+				
 				FenetreJeu fenPrin = new FenetreJeu();
 				fenPrin.peindreMurs(maMap,mapPoint);
 			}

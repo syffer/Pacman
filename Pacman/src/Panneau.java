@@ -13,8 +13,7 @@ public class Panneau extends JPanel
 	Map mapPoint;
 	
 	//Graphics save;
-	
-	
+		
 	
 	@Override
 	public void paintComponent(Graphics imMap) 
@@ -22,7 +21,7 @@ public class Panneau extends JPanel
 	
 		//if( !peutDessiner )
 		//{
-		imMap.setColor(Color.black);
+		imMap.setColor(Color.DARK_GRAY);
 		imMap.fillRect(0, 0, 1000 ,1000);
 			
 		//}
@@ -45,13 +44,19 @@ public class Panneau extends JPanel
 					imMap.setColor(Color.BLUE);
 					break;
 				case VIDE:
-					imMap.setColor(Color.DARK_GRAY);
+					imMap.setColor(Color.black);
 					break;
 				case TP:
 					imMap.setColor(Color.GREEN);
 					break;
 				case MUR_SPAWN:
-					imMap.setColor(Color.YELLOW);
+					imMap.setColor(Color.darkGray);
+					break;
+				default:
+					// rajouter ici exception
+					new Exception_Pacman("erreur lors du chargement des murs");
+					
+					imMap.setColor(Color.RED);
 					break;
 					
 				}
@@ -77,19 +82,26 @@ public class Panneau extends JPanel
 			{
 				switch(tableau[i][j].getType()){
 				case PASTILLE:
-					imMap.setColor(Color.ORANGE);
-					imMap.fillOval(j*w,i*h, w, h);
+					imMap.setColor(Color.white);
+					imMap.fillOval(j*w+(w/3),i*h+(h/3), w/3, h/3);
 					break;
 				case NON_PASTILLE:
 					// ne rien faire
 					break;
 				case PASTILLE_SPE:
-					imMap.setColor(Color.PINK);
-					imMap.fillOval(j*w,i*h, w, h);
+					imMap.setColor(Color.white);
+					imMap.fillOval( j*w +(int)(w/4) , i*h + (int)(h/4) , (int)(w/1.5) , (int)(h/1.5) );
+					break;
+					
+				case PACMAN_POS:
+					imMap.setColor( new Color(252,249,20) ); //<--
+					imMap.fillOval( j*w  , i*h , w , h );
 					break;
 				default:
 					// indiquer une erreur
 					// le faire autrement ... -> Exception
+					new Exception_Pacman("erreur lors du chargement des pastilles");
+					
 					imMap.setColor(Color.RED);
 					imMap.fillOval(j*w,i*h, w, h);
 					break;
@@ -97,6 +109,7 @@ public class Panneau extends JPanel
 				}
 			}
 		}
+		
 		
 	}
 	
@@ -109,6 +122,7 @@ public class Panneau extends JPanel
 		this.setMap(map);
 		this.setMapPoint(point);
 		Graphics imMap = this.getGraphics();
+		
 		
 		this.paintComponent(imMap);
 	}
