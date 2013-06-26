@@ -65,6 +65,10 @@ public class FenetreJeu extends JFrame implements KeyListener
 	{
 		// changer la direction de déplacement du pacman
 		this.touche_pacman =  e.getKeyChar();
+<<<<<<< HEAD
+=======
+		
+>>>>>>> origin/branche-MAXIME
 	}
 
 	@Override

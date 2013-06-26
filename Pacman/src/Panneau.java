@@ -45,6 +45,10 @@ public class Panneau extends JPanel
 				default:
 					// rajouter ici exception
 					new Exception_Pacman("erreur lors du chargement des murs");
+<<<<<<< HEAD
+=======
+					
+>>>>>>> origin/branche-MAXIME
 					imMap.setColor(Color.GREEN);
 					break;
 				}
