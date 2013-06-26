@@ -22,7 +22,7 @@ public class Panneau extends JPanel
 	
 		//if( !peutDessiner )
 		//{
-		imMap.setColor(Color.black);
+		imMap.setColor(Color.LIGHT_GRAY);
 		imMap.fillRect(0, 0, 1000 ,1000);
 			
 		//}
@@ -42,16 +42,19 @@ public class Panneau extends JPanel
 			{
 				switch(tableau[i][j].getType()){
 				case MUR:
-					imMap.setColor(Color.BLUE);
+					imMap.setColor( new Color(0,0,230) );
 					break;
 				case VIDE:
-					imMap.setColor(Color.DARK_GRAY);
+					imMap.setColor(Color.black);
 					break;
 				case TP:
 					imMap.setColor(Color.GREEN);
 					break;
 				case MUR_SPAWN:
 					imMap.setColor(Color.YELLOW);
+					break;
+				default:
+					// rajouter erreur -> exception
 					break;
 					
 				}
@@ -77,15 +80,15 @@ public class Panneau extends JPanel
 			{
 				switch(tableau[i][j].getType()){
 				case PASTILLE:
-					imMap.setColor(Color.ORANGE);
-					imMap.fillOval(j*w,i*h, w, h);
+					imMap.setColor(Color.white);
+					imMap.fillOval(j*w+(w/3),i*h+(h/3), w/3, h/3);
 					break;
 				case NON_PASTILLE:
 					// ne rien faire
 					break;
 				case PASTILLE_SPE:
-					imMap.setColor(Color.PINK);
-					imMap.fillOval(j*w,i*h, w, h);
+					imMap.setColor(Color.white);
+					imMap.fillOval(j*w+(w/3),i*h+(h/3), (int)(w/1.5), (int)(h/1.5));
 					break;
 				default:
 					// indiquer une erreur
