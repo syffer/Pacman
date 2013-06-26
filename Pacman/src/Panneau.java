@@ -96,9 +96,6 @@ public class Panneau extends JPanel
 	}
 	
 	
-
-	
-	
 	public void peindre( Map map )
 	{
 		this.setMap(map);

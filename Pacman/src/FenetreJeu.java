@@ -58,7 +58,7 @@ public class FenetreJeu extends JFrame implements KeyListener
 		{
 			for( int j = 0 ; j < this.laMap.getW() ; j++ )
 			{
-				laMap.setCaseTabVar(i, j, new Case( '4' ));
+				laMap.setCaseTabVar(j, i, new Case( '4' ));
 			}
 		}
 
