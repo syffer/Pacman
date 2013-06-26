@@ -19,6 +19,14 @@ public class Map {
 		return tabVar[y][x];
 	}
 
+	public void setCaseTabConst(int x, int y, Case c) {
+		tabConst[y][x] = c;
+	}
+
+	public void setCaseTabVar(int x, int y, Case c) {
+		tabVar[y][x] = c;
+	}
+	
 	public Map(String path){
 		this.load(path);
 	}
