@@ -10,6 +10,8 @@ public class Map {
 	private Case tabConst[][];
 	private Case tabVar[][];
 	
+	private String chemin;
+	
 
 	public Case getCaseTabConst(int x, int y) {
 		return tabConst[y][x];
@@ -29,8 +31,19 @@ public class Map {
 	
 	public Map(String path){
 		this.load(path);
+		
+		this.chemin = path;
+		
 	}
 	
+	public String getChemin() {
+		return chemin;
+	}
+
+	public void setChemin(String chemin) {
+		this.chemin = chemin;
+	}
+
 	public int getW() {
 		return w;
 	}
@@ -146,4 +159,16 @@ public class Map {
 	public void save(String path){
 		
 	}
+	
+	public Map cloner()
+	{
+		Map clone = new Map( this.getChemin() );
+		
+		return clone;
+		
+	}
+	
+	
+	
+	
 }
