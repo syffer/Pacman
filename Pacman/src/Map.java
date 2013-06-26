@@ -7,15 +7,16 @@ import java.util.Scanner;
 public class Map {
 	private int w;
 	private int h;
-	private Case tab[][];
+	private Case tabConst[][];
+	private Case tabVar[][];
 	
-	
-	public Case[][] getTab() {
-		return tab;
+
+	public Case getCaseTabConst(int x, int y) {
+		return tabConst[y][x];
 	}
 
-	public void setTab(Case[][] tab) {
-		this.tab = tab;
+	public Case getCaseTabVar(int x, int y) {
+		return tabVar[y][x];
 	}
 
 	public Map(String path){
@@ -68,7 +69,9 @@ public class Map {
 			// le nextInt ne prend surement pas le caractère de fin de ligne (\n)
 			if(scanner.hasNextLine()) scanner.nextLine();
 
-			this.tab = new Case[this.h][this.w];
+			
+			/* Chargement des cases fixes de la map */
+			this.tabConst = new Case[this.h][this.w];
 			
 			for( int i = 0 ; i < this.h ; i++)
 			{
@@ -77,15 +80,35 @@ public class Map {
 				if(scanner.hasNextLine())
 				{
 					tmp = scanner.nextLine();
+					System.out.println(tmp);
+					
+					for(int j = 0 ; j < tmp.length() ; j ++)
+					{
+						this.tabConst[i][j] = new Case( tmp.charAt(j) );
+					}
 				}
+			}
+			
+			// sauter 1 ligne
+			if(scanner.hasNextLine()) scanner.nextLine();
+			
+			/* Chargement des cases variables de la map */
+			this.tabVar = new Case[this.h][this.w];
+			
+			for( int i = 0 ; i < this.h ; i++)
+			{
+				String tmp = "";
 				
-				System.out.println(tmp);
-				
-				for(int j = 0 ; j < tmp.length() ; j ++)
+				if(scanner.hasNextLine())
 				{
-					this.tab[i][j] = new Case( tmp.charAt(j) );
+					tmp = scanner.nextLine();
+					System.out.println(tmp);
+					
+					for(int j = 0 ; j < tmp.length() ; j ++)
+					{
+						this.tabVar[i][j] = new Case( tmp.charAt(j) );
+					}
 				}
-				
 			}
 			
 			scanner.close();
@@ -103,7 +126,7 @@ public class Map {
 		{
 			for( int j = 0 ; j < this.w ; j++ )
 			{
-				tmp += this.tab[i][j].getType();
+				tmp += this.tabConst[i][j].getType();
 			}
 			tmp = tmp + "\n";
 		}
