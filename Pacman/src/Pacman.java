@@ -6,19 +6,10 @@ public class Pacman
 {
 
 	public static void main(String[] args) {
+		Map maMap = new Map("rsc\\map.txt");				
 		
-		//SwingUtilities.invokeLater(new Runnable() {
-		//	public void run() {
-				
-				Map maMap = new Map("rsc\\map.txt");
-				
-				Map mapPoint = new Map("rsc\\mapPoint.txt");
-				
-				
-				FenetreJeu fenPrin = new FenetreJeu();
-				fenPrin.peindreMurs(maMap,mapPoint);
-		//	}
-		//});
+		FenetreJeu fenPrin = new FenetreJeu();
+		fenPrin.peindreMurs(maMap);
 	}
 
 	

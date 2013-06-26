@@ -48,24 +48,9 @@ public class FenetreJeu extends JFrame implements KeyListener
 	}
 	
 	
-	public void peindreMurs( Map map , Map map2)
+	public void peindreMurs( Map map)
 	{
-		this.getPanneau().peindre(map,map2);
-		
-		this.laMap = map2;
-		this.mapMur = map;
-	}
-
-	
-	
-	
-	
-	// implementation KeyListener a modifier
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-		
+		this.getPanneau().peindre(map);
 	}
 
 	@Override

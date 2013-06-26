@@ -10,7 +10,6 @@ public class Panneau extends JPanel
 {
 	
 	Map laMap;
-	Map mapPoint;
 	
 	//Graphics save;
 		
@@ -18,27 +17,19 @@ public class Panneau extends JPanel
 	@Override
 	public void paintComponent(Graphics imMap) 
 	{	
-		//if( !peutDessiner )
-		//{
 		imMap.setColor(Color.DARK_GRAY);
 		imMap.fillRect(0, 0, 1000 ,1000);
-			
-		//}
-		//else 
-		//{
 		
 		
 		// partie création murs
 		int w = 18;
 		int h = 12;
 		
-		Case tableau[][] = laMap.getTab();
-		
 		for( int i = 0 ; i < laMap.getH() ; i++ )
 		{
 			for( int j = 0 ; j < laMap.getW() ; j++)
 			{
-				switch(tableau[i][j].getType()){
+				switch(laMap.getCaseTabConst(j, i).getType()){
 				case MUR:
 					imMap.setColor(Color.BLUE);
 					break;
@@ -57,29 +48,27 @@ public class Panneau extends JPanel
 					
 					imMap.setColor(Color.RED);
 					break;
-					
+				default:
+					// indiquer une erreur
+					// le faire autrement ... -> Exception
+					imMap.setColor(Color.RED);
+					imMap.fillOval(j*w,i*h, w, h);
+					break;
 				}
 
 				imMap.fillRect(j*w,i*h, w, h);
 
 			}
 		}
-			
-		//}
-		
-		//paintComponents(imMap);	// ne sert strictement à rien		
-		//this.save = imMap;
-		
 		
 		//partie création points/pastilles
 		
 		// ---> les redimmensionner  -> pas beau ...
-		tableau = this.mapPoint.getTab();
-		for( int i = 0 ; i < mapPoint.getH() ; i++ )
+		for( int i = 0 ; i < laMap.getH() ; i++ )
 		{
-			for( int j = 0 ; j < mapPoint.getW() ; j++)
+			for( int j = 0 ; j < laMap.getW() ; j++)
 			{
-				switch(tableau[i][j].getType()){
+				switch(laMap.getCaseTabVar(j, i).getType()){
 				case PASTILLE:
 					imMap.setColor(Color.white);
 					imMap.fillOval(j*w+(w/3),i*h+(h/3), w/3, h/3);
@@ -116,22 +105,16 @@ public class Panneau extends JPanel
 
 	
 	
-	public void peindre( Map map , Map point )
+	public void peindre( Map map )
 	{
 		this.setMap(map);
-		this.setMapPoint(point);
 		Graphics imMap = this.getGraphics();
 		
 		
 		this.paintComponent(imMap);
 	}
 	
-	
-	public void setMapPoint( Map map )
-	{
-		this.mapPoint = map;
-	}
-	
+
 	public void setMap( Map map )
 	{
 		this.laMap = map;
