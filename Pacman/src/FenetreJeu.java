@@ -1,30 +1,42 @@
+
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
-public class FenetreJeu extends JFrame {
+public class FenetreJeu extends JFrame implements KeyListener
+{
 		
 	Panneau panneau;
-	JFrame fen;
+	
+	
+	Map mapMur;
+	Map laMap;
+	
 	
 	public FenetreJeu(){
 		super();
 		build();
+		
+		addKeyListener(this); // on ajoute le KeyListener ici
 	}
 
 	private void build() {
-		this.fen = new JFrame();
+		new JFrame();
 		
-		fen.setTitle("Pacman");
-		fen.setSize(600,400);
-		fen.setLocationRelativeTo(null);
-		fen.setResizable(false);
-		fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Pacman");
+		setSize(600,400);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		this.panneau = new Panneau();
 		
-		fen.setContentPane( this.panneau );
+		setContentPane( this.panneau );
 		
-		fen.setVisible(true);
+		setVisible(true);
 	}
 	
 		
@@ -40,4 +52,39 @@ public class FenetreJeu extends JFrame {
 	{
 		this.getPanneau().peindre(map);
 	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		Case tab[][] = this.laMap.getTab();
+		
+		for(int i = 0 ; i < this.laMap.getH() ; i++ )
+		{
+			for( int j = 0 ; j < this.laMap.getW() ; j++ )
+			{
+				tab[i][j] = new Case( '2' );
+			}
+		}
+
+		laMap.setTab(tab);
+		
+		peindreMurs(mapMur,laMap);
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void init()
+	{
+		 addKeyListener(this);
+	}
+	public void start()
+	{
+		requestFocus();
+	}
+	
+	
 }

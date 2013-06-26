@@ -10,7 +10,9 @@ public class Case {
 		PASTILLE('4'),
 		NON_PASTILLE('5'),
 		PASTILLE_SPE('6'),
-		BONUS('7');
+		BONUS('7'),
+		PACMAN_POS('8'),
+		ENNEMIE_POS('9');
 	 
 		private final char value;
 		
