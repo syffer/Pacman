@@ -7,10 +7,10 @@ import java.awt.Point;
 
 
 
-public class DessinerPacman extends DessinerCercle
+public class DessinPacman extends DessinCercle
 {
 
-	public DessinerPacman( Point position , Dimension dim )
+	public DessinPacman( Point position , Dimension dim )
 	{
 		super(position,dim, new Color(252,249,20) );
 	}

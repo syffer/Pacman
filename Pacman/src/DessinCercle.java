@@ -7,17 +7,17 @@ import java.awt.Rectangle;
 
 
 
-public class DessinerRectangle extends DessinerDessin
+public class DessinCercle extends Dessin
 {
 
 	public Color couleur;
-	public Rectangle rect;
+	public Rectangle cercle;
 	
-	public DessinerRectangle( Point position , Dimension dim , Color coul )
+	public DessinCercle( Point position , Dimension dim , Color coul )
 	{
 		super(position,dim);
 		this.couleur = coul;
-		this.rect = new Rectangle(position,dim);
+		this.cercle = new Rectangle(position,dim);
 	}
 		
 	
@@ -35,7 +35,7 @@ public class DessinerRectangle extends DessinerDessin
 		// TODO Auto-generated method stub
 		
 		g.setColor( this.getCouleur() );
-		g.fillRect(this.rect.x, this.rect.y, this.rect.width, this.rect.height);
+		g.fillOval(this.cercle.x, this.cercle.y, this.cercle.width, this.cercle.height);
 		
 	}
 	

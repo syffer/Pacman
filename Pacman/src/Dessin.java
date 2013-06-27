@@ -3,12 +3,12 @@ import java.awt.Point;
 
 
 
-public abstract class DessinerDessin implements Dessiner
+public abstract class Dessin implements Dessinable
 {
 	Point position;
 	Dimension dimension;
 	
-	public DessinerDessin( Point pos , Dimension dim )
+	public Dessin( Point pos , Dimension dim )
 	{
 		this.position = pos;
 		this.dimension = dim;

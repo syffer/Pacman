@@ -4,22 +4,20 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 
-import javax.swing.*;
 
 
 
-
-public class DessinerCercle extends DessinerDessin
+public class DessinRectangle extends Dessin
 {
 
 	public Color couleur;
-	public Rectangle cercle;
+	public Rectangle rect;
 	
-	public DessinerCercle( Point position , Dimension dim , Color coul )
+	public DessinRectangle( Point position , Dimension dim , Color coul )
 	{
 		super(position,dim);
 		this.couleur = coul;
-		this.cercle = new Rectangle(position,dim);
+		this.rect = new Rectangle(position,dim);
 	}
 		
 	
@@ -37,7 +35,7 @@ public class DessinerCercle extends DessinerDessin
 		// TODO Auto-generated method stub
 		
 		g.setColor( this.getCouleur() );
-		g.fillOval(this.cercle.x, this.cercle.y, this.cercle.width, this.cercle.height);
+		g.fillRect(this.rect.x, this.rect.y, this.rect.width, this.rect.height);
 		
 	}
 	

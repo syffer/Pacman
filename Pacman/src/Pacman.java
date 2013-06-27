@@ -109,11 +109,7 @@ public class Pacman
 			}
 			
 			try {
-<<<<<<< HEAD
 				Thread.sleep(30);
-=======
-				Thread.sleep(1000);
->>>>>>> origin/branche-MAXIME
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

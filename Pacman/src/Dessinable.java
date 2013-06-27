@@ -1,9 +1,7 @@
 import java.awt.Graphics;
 
 
-public interface Dessiner
+public interface Dessinable
 {
 	public void draw( Graphics g );
-	
-	
 }

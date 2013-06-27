@@ -1,6 +1,5 @@
 
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
@@ -15,7 +14,7 @@ public class FenetreJeu extends JFrame implements KeyListener
 	Panneau panneau;
 
 	Map laMap;
-	DessinerPacman savePacman;
+	DessinPacman savePacman;
 	
 	char touche_pacman = 'q';
 	
@@ -65,7 +64,7 @@ public class FenetreJeu extends JFrame implements KeyListener
 				// partie création murs
 				int w = 20;
 				int h = 20;
-				DessinerDessin d = null;
+				Dessin d = null;
 				
 				
 				for( int i = 0 ; i < laMap.getH() ; i++ )
@@ -74,15 +73,15 @@ public class FenetreJeu extends JFrame implements KeyListener
 					{
 						switch(laMap.getCaseTabConst(i, j).getType()){
 						case MUR:
-							d = new DessinerMurs( new Point(j*w, i*h) , new Dimension( w , h ) );
+							d = new DessinMurs( new Point(j*w, i*h) , new Dimension( w , h ) );
 							
 							break;
 						case VIDE:
-							d = new DessinerVide( new Point(j*w, i*h) , new Dimension( w , h ) );
+							d = new DessinVide( new Point(j*w, i*h) , new Dimension( w , h ) );
 							
 							break;
 						case MUR_SPAWN:
-							d = new DessinerMurSpawn( new Point(j*w, i*h) , new Dimension( w , h ) );
+							d = new DessinMurSpawn( new Point(j*w, i*h) , new Dimension( w , h ) );
 							
 							break;
 						default:
@@ -107,9 +106,9 @@ public class FenetreJeu extends JFrame implements KeyListener
 						case PASTILLE:
 							int wPastille = w/3;
 							int hPastille = w/3;
-							int potition1 = j*w + w/2 - wPastille/2;
-							int position2 = i*h + h/2 - hPastille;
-							d = new DessinerPastille( new Point(potition1, position2) , new Dimension( wPastille , hPastille ) );
+							int xPastille = j*w + w/2 - wPastille/2;
+							int yPastille = i*h + h/2 - hPastille/2;
+							d = new DessinPastille( new Point(xPastille, yPastille) , new Dimension( wPastille , hPastille ) );
 							
 							break;
 						case NON_PASTILLE:
@@ -118,15 +117,15 @@ public class FenetreJeu extends JFrame implements KeyListener
 						case PASTILLE_SPE:
 							int wSpe = w*2/3;
 							int hSpe = h*2/3;
-							int potition11 = j*w + w/2 - wSpe/2;
-							int position22 = i*h + h/2 - hSpe/2;
-							d = new DessinerPastille( new Point(potition11, position22) , new Dimension( wSpe , hSpe ) );
+							int xSpe = j*w + w/2 - wSpe/2;
+							int ySpe = i*h + h/2 - hSpe/2;
+							d = new DessinPastille( new Point(xSpe, ySpe) , new Dimension( wSpe , hSpe ) );
 							
 							break;
 							
 						case PACMAN_POS:
-							d = new DessinerPacman( new Point(j*w,i*h) , new Dimension( w , h ) );
-							savePacman = (DessinerPacman)d;
+							d = new DessinPacman( new Point(j*w,i*h) , new Dimension( w , h ) );
+							savePacman = (DessinPacman)d;
 							break;
 						default:
 							// indiquer une erreur

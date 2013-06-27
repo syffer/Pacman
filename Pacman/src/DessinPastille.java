@@ -7,10 +7,10 @@ import java.awt.Point;
 
 
 
-public class DessinerPastille extends DessinerCercle
+public class DessinPastille extends DessinCercle
 {
 
-	public DessinerPastille( Point position , Dimension dim )
+	public DessinPastille( Point position , Dimension dim )
 	{
 		super(position,dim,Color.WHITE);
 	}
