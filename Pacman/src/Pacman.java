@@ -1,3 +1,5 @@
+import java.awt.Point;
+
 public class Pacman 
 {
 
@@ -9,12 +11,14 @@ public class Pacman
 		FenetreJeu fenPrin = new FenetreJeu();
 		fenPrin.peindreMurs(maMap);
 
-		boolean gagner = false;
-
+		boolean perdu = false; // perdu si collision avec ennemie
+		
 
 		// les coordonnees du pacman
 		Coordonnees coordPac = trouverPacman(maMap);
-
+		
+		// pour verifier si gagner marche
+		// maMap.setNombrePastillles(1);
 		do
 		{
 
@@ -27,7 +31,16 @@ public class Pacman
 				if( maMap.getCaseTabConst(coordPac.getY()-1, coordPac.getX()).getType() !=  Case.Type.MUR )
 				{
 					maMap.setCaseTabVar(coordPac.getY(),coordPac.getX() , new Case('5') );
+										
 					coordPac.setY(coordPac.getY() - 1);
+					
+									
+					
+					if( maMap.getCaseTabVar( coordPac.getY() , coordPac.getX() ).getType() == Case.Type.PASTILLE || maMap.getCaseTabVar( coordPac.getY() , coordPac.getX() ).getType() == Case.Type.PASTILLE_SPE )
+					{
+						maMap.decrementerPastille();
+					}
+					
 					maMap.setCaseTabVar(coordPac.getY(),coordPac.getX() , new Case('8') );
 				}
 
@@ -36,8 +49,22 @@ public class Pacman
 				// vers la gauche
 				if( maMap.getCaseTabConst(coordPac.getY(), coordPac.getX()-1).getType() !=  Case.Type.MUR )
 				{
+					
+
 					maMap.setCaseTabVar(coordPac.getY(),coordPac.getX() , new Case('5') );
+					
+
+					
+					
+
 					coordPac.setX( coordPac.getX() - 1 );
+							
+					
+					if( maMap.getCaseTabVar( coordPac.getY() , coordPac.getX() ).getType() == Case.Type.PASTILLE || maMap.getCaseTabVar( coordPac.getY() , coordPac.getX() ).getType() == Case.Type.PASTILLE_SPE )
+					{
+						maMap.decrementerPastille();
+					}
+					
 					maMap.setCaseTabVar(coordPac.getY(),coordPac.getX() , new Case('8') );
 				}
 
@@ -48,6 +75,12 @@ public class Pacman
 				{
 					maMap.setCaseTabVar(coordPac.getY(),coordPac.getX() , new Case('5') );
 					coordPac.setY(coordPac.getY() + 1);
+					
+					if( maMap.getCaseTabVar( coordPac.getY() , coordPac.getX() ).getType() == Case.Type.PASTILLE || maMap.getCaseTabVar( coordPac.getY() , coordPac.getX() ).getType() == Case.Type.PASTILLE_SPE )
+					{
+						maMap.decrementerPastille();
+					}
+					
 					maMap.setCaseTabVar(coordPac.getY(),coordPac.getX() , new Case('8') );
 				}
 
@@ -58,6 +91,12 @@ public class Pacman
 				{
 					maMap.setCaseTabVar(coordPac.getY(),coordPac.getX() , new Case('5') );
 					coordPac.setX(coordPac.getX()+1);
+					
+					if( maMap.getCaseTabVar( coordPac.getY() , coordPac.getX() ).getType() == Case.Type.PASTILLE || maMap.getCaseTabVar( coordPac.getY() , coordPac.getX() ).getType() == Case.Type.PASTILLE_SPE )
+					{
+						maMap.decrementerPastille();
+					}
+					
 					maMap.setCaseTabVar(coordPac.getY(),coordPac.getX() , new Case('8') );
 				}
 
@@ -70,15 +109,21 @@ public class Pacman
 			}
 			
 			try {
+<<<<<<< HEAD
 				Thread.sleep(30);
+=======
+				Thread.sleep(1000);
+>>>>>>> origin/branche-MAXIME
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
-			fenPrin.peindreMurs(maMap);
+			
+			fenPrin.rePeindre();
 
-		}while(!gagner);
+			
+		}while( maMap.getNombrePastillles() != 0  || perdu);
 
 
 	}
@@ -95,6 +140,13 @@ public class Pacman
 		}
 		return new Coordonnees(-1,-1);
 	}
+	
+	
+	public static Point coordonnee_vers_point( Coordonnees c )
+	{
+		return new Point( c.getY() , c.getX() );		
+	}
+	
 
 
 }

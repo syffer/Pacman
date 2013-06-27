@@ -10,6 +10,8 @@ public class Map {
 	private Case tabConst[][];
 	private Case tabVar[][];
 	
+	int nombrePastillles;
+	
 	private String chemin;
 	
 
@@ -128,6 +130,9 @@ public class Map {
 					for(int j = 0 ; j < tmp.length() ; j ++)
 					{
 						this.tabVar[i][j] = new Case( tmp.charAt(j) );
+						
+						if( ( this.tabVar[i][j].getType() == Case.Type.PASTILLE ) || ( this.tabVar[i][j].getType() == Case.Type.PASTILLE_SPE ) ) this.nombrePastillles++;
+						
 					}
 				}
 			}
@@ -156,6 +161,20 @@ public class Map {
 		
 	}
 	
+	public int getNombrePastillles() {
+		return nombrePastillles;
+	}
+
+	public void setNombrePastillles(int nombrePastillles) {
+		this.nombrePastillles = nombrePastillles;
+	}
+	
+	public void decrementerPastille()
+	{
+		this.nombrePastillles--;
+	}
+	
+
 	public void save(String path){
 
 	}
