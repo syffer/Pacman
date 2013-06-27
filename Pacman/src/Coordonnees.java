@@ -5,10 +5,10 @@ public class Coordonnees
 	int x;
 	int y;
 	
-	public Coordonnees( int a , int b )
+	public Coordonnees( int x, int y )
 	{
-		this.x = b ;
-		this.y = a;
+		this.x = x ;
+		this.y = y;
 	}
 
 	public int getX() {

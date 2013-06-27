@@ -13,20 +13,20 @@ public class Map {
 	private String chemin;
 	
 
-	public Case getCaseTabConst(int x, int y) {
-		return tabConst[y][x];
+	public Case getCaseTabConst(int i, int j) {
+		return tabConst[i][j];
 	}
 
-	public Case getCaseTabVar(int x, int y) {
-		return tabVar[y][x];
+	public Case getCaseTabVar(int i, int j) {
+		return tabVar[i][j];
 	}
 
-	public void setCaseTabConst(int x, int y, Case c) {
-		tabConst[y][x] = c;
+	public void setCaseTabConst(int i, int j, Case c) {
+		tabConst[i][j] = c;
 	}
 
-	public void setCaseTabVar(int x, int y, Case c) {
-		tabVar[y][x] = c;
+	public void setCaseTabVar(int i, int j, Case c) {
+		tabVar[i][j] = c;
 	}
 	
 	public Map(String path){
@@ -157,18 +157,6 @@ public class Map {
 	}
 	
 	public void save(String path){
-		
+
 	}
-	
-	public Map cloner()
-	{
-		Map clone = new Map( this.getChemin() );
-		
-		return clone;
-		
-	}
-	
-	
-	
-	
 }

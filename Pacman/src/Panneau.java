@@ -16,10 +16,7 @@ public class Panneau extends JPanel
 	
 	@Override
 	public void paintComponent(Graphics imMap) 
-	{	
-		imMap.setColor(Color.DARK_GRAY);
-		imMap.fillRect(0, 0, 1000 ,1000);
-		
+	{
 		
 		// partie création murs
 		int w = 20;
@@ -29,7 +26,7 @@ public class Panneau extends JPanel
 		{
 			for( int j = 0 ; j < laMap.getW() ; j++)
 			{
-				switch(laMap.getCaseTabConst(j, i).getType()){
+				switch(laMap.getCaseTabConst(i, j).getType()){
 				case MUR:
 					imMap.setColor(Color.BLUE);
 					break;
@@ -45,10 +42,6 @@ public class Panneau extends JPanel
 				default:
 					// rajouter ici exception
 					new Exception_Pacman("erreur lors du chargement des murs");
-<<<<<<< HEAD
-=======
-					
->>>>>>> origin/branche-MAXIME
 					imMap.setColor(Color.GREEN);
 					break;
 				}
@@ -65,17 +58,21 @@ public class Panneau extends JPanel
 		{
 			for( int j = 0 ; j < laMap.getW() ; j++)
 			{
-				switch(laMap.getCaseTabVar(j, i).getType()){
+				switch(laMap.getCaseTabVar(i, j).getType()){
 				case PASTILLE:
+					int wPastille = w/3;
+					int hPastille = w/3;
 					imMap.setColor(Color.white);
-					imMap.fillOval(j*w+(w/3),i*h+(h/3), w/3, h/3);
+					imMap.fillOval(j*w + w/2 - wPastille/2,i*h + h/2 - hPastille, wPastille, hPastille);
 					break;
 				case NON_PASTILLE:
 					// ne rien faire
 					break;
 				case PASTILLE_SPE:
+					int wSpe = w*2/3;
+					int hSpe = h*2/3;
 					imMap.setColor(Color.white);
-					imMap.fillOval( j*w +(int)(w/4) , i*h + (int)(h/4) , (int)(w/1.5) , (int)(h/1.5) );
+					imMap.fillOval( j*w + w/2 - wSpe/2, i*h + h/2 - hSpe/2, wSpe, hSpe);
 					break;
 					
 				case PACMAN_POS:
