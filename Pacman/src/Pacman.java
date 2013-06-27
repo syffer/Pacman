@@ -1,3 +1,5 @@
+import java.awt.Point;
+
 public class Pacman 
 {
 
@@ -29,7 +31,10 @@ public class Pacman
 				if( maMap.getCaseTabConst(coordPac.getY()-1, coordPac.getX()).getType() !=  Case.Type.MUR )
 				{
 					maMap.setCaseTabVar(coordPac.getY(),coordPac.getX() , new Case('5') );
+										
 					coordPac.setY(coordPac.getY() - 1);
+					
+									
 					
 					if( maMap.getCaseTabVar( coordPac.getY() , coordPac.getX() ).getType() == Case.Type.PASTILLE || maMap.getCaseTabVar( coordPac.getY() , coordPac.getX() ).getType() == Case.Type.PASTILLE_SPE )
 					{
@@ -44,8 +49,16 @@ public class Pacman
 				// vers la gauche
 				if( maMap.getCaseTabConst(coordPac.getY(), coordPac.getX()-1).getType() !=  Case.Type.MUR )
 				{
+					
+
 					maMap.setCaseTabVar(coordPac.getY(),coordPac.getX() , new Case('5') );
+					
+
+					
+					
+
 					coordPac.setX( coordPac.getX() - 1 );
+							
 					
 					if( maMap.getCaseTabVar( coordPac.getY() , coordPac.getX() ).getType() == Case.Type.PASTILLE || maMap.getCaseTabVar( coordPac.getY() , coordPac.getX() ).getType() == Case.Type.PASTILLE_SPE )
 					{
@@ -96,14 +109,16 @@ public class Pacman
 			}
 			
 			try {
-				Thread.sleep(100);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
-			fenPrin.peindreMurs(maMap);
+			
+			fenPrin.rePeindre();
 
+			
 		}while( maMap.getNombrePastillles() != 0  || perdu);
 
 
@@ -121,6 +136,13 @@ public class Pacman
 		}
 		return new Coordonnees(-1,-1);
 	}
+	
+	
+	public static Point coordonnee_vers_point( Coordonnees c )
+	{
+		return new Point( c.getY() , c.getX() );		
+	}
+	
 
 
 }
